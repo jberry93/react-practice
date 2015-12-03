@@ -4,6 +4,7 @@ var CommentBox = React.createClass({
       <div className="commentBox">
         <h1>Comments Galore!</h1>
         <CommentList />
+        <br /><br />
         <CommentForm />
       </div>
     );
@@ -13,7 +14,10 @@ var CommentBox = React.createClass({
 var CommentList = React.createClass({
   render: function() {
     return (
-      <div className="commentList">Hey! Here is a comment list!</div>
+      <div className="commentList">
+        <Comment author="Hime">I am a pug</Comment>
+        <Comment author="Kirby">I am a chihuahua</Comment>
+      </div>
     )
   }
 });
