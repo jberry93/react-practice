@@ -43,6 +43,24 @@ var Comment = React.createClass({
       </div>
     )
   }
-})
+});
+
+var data = [
+  {
+    id: 1,
+    author: "Jeffrey",
+    text: "I am learning about **React**"
+  },
+  {
+    id: 2,
+    author: "Tom",
+    text: "I want to learn more ##### JavaScript"
+  },
+  {
+    id: 3,
+    author: "Jane",
+    text: "I think **Angular** is useful to learn"
+  }
+];
 
 ReactDOM.render(<CommentBox />, document.getElementById("content"));
