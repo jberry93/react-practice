@@ -2,6 +2,19 @@ var CommentBox = React.createClass({
   getInitialState: function() {
     return {data: []};
   },
+  ajaxCall: function() {
+    $.ajax({
+      url: this.props.url,
+      dataType: "json",
+      cache: false,
+      success: function(data) {
+        this.setState({ data: data });
+      }.bind(this),
+      error: function(httpRequest, status, error) {
+        console.error(this.props.url, status, error.toString());
+      }.bind(this)
+    });
+  },
   render: function() {
     return (
       <div className="commentBox">
