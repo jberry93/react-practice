@@ -15,6 +15,10 @@ var CommentBox = React.createClass({
       }.bind(this)
     });
   },
+  callInterval: function() {
+    this.ajaxCall();
+    setInterval(this.ajaxCall, this.props.pollInterval);
+  },
   render: function() {
     return (
       <div className="commentBox">
@@ -38,7 +42,7 @@ var CommentList = React.createClass({
       <div className="commentList">
         {commentNodes}
       </div>
-    )
+    );
   }
 });
 
@@ -46,7 +50,7 @@ var CommentForm = React.createClass({
   render: function() {
     return (
       <div className="commentForm">Hey! Here is a comment form!</div>
-    )
+    );
   }
 });
 
@@ -61,8 +65,8 @@ var Comment = React.createClass({
         <h2 className="commentAuthor">{this.props.author}</h2>
         <span dangerouslySetInnerHTML={this.rawMarkup()} />
       </div>
-    )
+    );
   }
 });
 
-ReactDOM.render(<CommentBox url="/api/comments" />, document.getElementById("content"));
+ReactDOM.render(<CommentBox url="/api/comments" pollInterval={2000} />, document.getElementById("content"));
