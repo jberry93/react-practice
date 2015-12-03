@@ -1,9 +1,12 @@
 var CommentBox = React.createClass({
+  getInitialState: function() {
+    return {data: []};
+  },
   render: function() {
     return (
       <div className="commentBox">
         <h1>Comments Galore!</h1>
-        <CommentList data={this.props.data} />
+        <CommentList data={this.state.data} />
         <br />
         <CommentForm />
       </div>
@@ -49,27 +52,4 @@ var Comment = React.createClass({
   }
 });
 
-var data = [
-  {
-    id: 1,
-    author: "Jeffrey",
-    text: "I am learning about **React**"
-  },
-  {
-    id: 2,
-    author: "Tom",
-    text: "I want to learn more **JavaScript**"
-  },
-  {
-    id: 3,
-    author: "Jane",
-    text: "I think **Angular** is useful to learn"
-  },
-  {
-    id: 4,
-    author: "Jake",
-    text: "Here's another comment!!"
-  }
-];
-
-ReactDOM.render(<CommentBox data={data} />, document.getElementById("content"));
+ReactDOM.render(<CommentBox url="/api/comments" />, document.getElementById("content"));
