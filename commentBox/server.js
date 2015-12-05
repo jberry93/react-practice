@@ -1,6 +1,5 @@
 var express = require("express"),
     server = express(),
-    fs = require("fs"),
     path = require("path");
 
 server.get("/", function(request, response) {
