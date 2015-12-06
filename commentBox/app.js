@@ -19,13 +19,16 @@ var CommentBox = React.createClass({
     this.ajaxCall();
     setInterval(this.ajaxCall, this.props.pollInterval);
   },
+  handleCommentSubmit: function(comment) {
+    // submit to server and refresh list
+  },
   render: function() {
     return (
       <div className="commentBox">
         <h1>Comments Galore!</h1>
         <CommentList data={this.state.data} />
         <br />
-        <CommentForm />
+        <CommentForm onCommentSubmit={this.handleCommentSubmit} />
       </div>
     );
   }
