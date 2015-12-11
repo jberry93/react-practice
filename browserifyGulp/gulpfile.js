@@ -20,3 +20,20 @@ gulp.task("watcher", function() {
 });
 
 gulp.task("default", ["watcher"]);
+
+/* Production Tasks */
+gulp.task("replaceJS", function() {
+  gulp.src("source/index.html")
+    .pipe(replaceHTML({ "js": "build/" + "build.min.js" }))
+    .pipe(gulp.dest("build.min.js"));
+});
+
+gulp.task("build", function() {
+  gulp.src("source/js/*.js")
+    .pipe(react())
+    .pipe(concat("build.min.js"))
+    .pipe(uglify("build.min.js"))
+    .pipe(gulp.dest("dist/build"));
+});
+
+gulp.task("production", ["replaceJS", "build"]);
