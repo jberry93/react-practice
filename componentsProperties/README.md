@@ -78,15 +78,42 @@ ReactDOM.render(
   <div>
     <ComponentName language="JavaScript" />
     <ComponentName language="Python" />
-    <ComponentName language="C++" />
     <ComponentName language="Ruby" />
     <ComponentName language="PHP" />
+    <ComponentName language="C++" />
   </div>, document.getElementById("idOfDivElement"));
 ```
-Now we are reusing the same component but printing a different value each time since we are using curly braces to represent each value of property `language`
+To include more than one component we need to place all our components in a div. Now we are reusing the same component and we are printing a different value each time since we are using curly braces to represent each value of property (`prop`) `language`
 
 Output:
 
 ![Output3](images/output3.png)
 
 ---
+Now let's use multiple properties on multiple components:
+
+```JavaScript
+/* app.js */
+
+var ComponentName = React.createClass({
+  render: function() {
+    return (
+      <h3>{this.props.user} wants to learn {this.props.language}</h3>
+    );
+  }
+});
+
+ReactDOM.render(
+  <div>
+    <ComponentName user="Jim" language="JavaScript" />
+    <ComponentName user="Betty" language="Python" />
+    <ComponentName user="George" language="Ruby" />
+    <ComponentName user="Jane" language="PHP" />
+    <ComponentName user="Jeff" language="C++" />
+  </div>, document.getElementById("idOfDivElement"));
+```
+Using the same concept as the previous section with one property, all we did was add an extra property referencing names
+
+Output:
+
+![Output4](images/output4.png)
