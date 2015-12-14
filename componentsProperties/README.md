@@ -1,4 +1,34 @@
 ## Multiple Components and Properties
+A few notes before beginning:
+- If you want to see the results/experiement, go ahead and clone this repo:
+```BASH
+git clone https://github.com/jberry93/react-practice.git
+```
+- Navigate to the `componentsProperties` directory
+- Install `live-server` using `npm install` or `npm install --save live-server`
+- Initialize a development server using `npm start`
+  - If this doesn't work then make sure your copy of `package.json` looks exactly like this:
+  ```JSON
+  {
+    "name": "componentsproperties",
+    "version": "1.0.0",
+    "description": "",
+    "main": "app.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "start": "live-server"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "live-server": "^0.9.0"
+    }
+  }
+  ```
+  - You need `"start": "live-server"` for `npm start` to work
+- Should be good to go now :+1:
+
+---
 Here is the initial layout for our component:
 
 ```JavaScript
