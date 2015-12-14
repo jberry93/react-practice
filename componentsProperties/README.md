@@ -1,5 +1,5 @@
 ## Multiple Components and Properties
-Here is the initial layout for a component in React:
+Here is the initial layout for our component:
 
 ```JavaScript
 /* app.js */
@@ -33,3 +33,23 @@ Here is the corresponding HTML file:
   </body>
 </html>
 ```
+---
+Let's use properties:
+
+```JavaScript
+/* app.js */
+
+var ComponentName = React.createClass({
+  render: function() {
+    return (
+      <h3>I want to learn {this.props.language}</h3>
+    );
+  }
+});
+
+ReactDOM.render(<ComponentName language="JavaScript" />, document.getElementById("idOfDivElement"));
+```
+
+In this case we use curly braces to refer to the value of property `language`
+
+---
