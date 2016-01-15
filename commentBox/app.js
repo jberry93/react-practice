@@ -3,24 +3,42 @@ var CommentBox = React.createClass({
     return {data: []};
   },
   ajaxCall: function() {
-    $.ajax({
-      url: this.props.url,
-      dataType: "json",
-      cache: false,
-      success: function(data) {
-        this.setState({ data: data });
-      }.bind(this),
-      error: function(httpRequest, status, error) {
-        console.error(this.props.url, status, error.toString());
-      }.bind(this)
-    });
+    // $.ajax({
+    //   url: this.props.url,
+    //   dataType: "json",
+    //   cache: false,
+    //   success: function(data) {
+    //     this.setState({ data: data });
+    //   }.bind(this),
+    //   error: function(httpRequest, status, error) {
+    //     console.error(this.props.url, status, error.toString());
+    //   }.bind(this)
+    // });
+    var httpRequest = new XMLHttpRequest();
+    httpRequest.open("GET", this.props.url, true);
+    httpRequest.send();
   },
   callInterval: function() {
     this.ajaxCall();
     setInterval(this.ajaxCall, this.props.pollInterval);
   },
   handleCommentSubmit: function(comment) {
-    // submit to server and refresh list
+    // $.ajax({
+    //   url: this.props.url,
+    //   dataType: "json",
+    //   type: "POST",
+    //   data: comment,
+    //   success: function(data) {
+    //     this.setState({ data: data });
+    //   }.bind(this),
+    //   error: function(httpRequest, status, error) {
+    //     console.error(this.props.url, status, error.toString());
+    //   }.bind(this)
+    // });
+    var httpRequest = new XMLHttpRequest();
+    httpRequest.open("POST", this.props.url, true);
+    httpRequest.setRequestHeader("Content-Type", "application/json");
+    httpRequest.send(comment);
   },
   render: function() {
     return (
@@ -65,7 +83,7 @@ var Comment = React.createClass({
 });
 
 var CommentForm = React.createClass({
-  initialState: function() {
+  getInitialState: function() {
     return { author: "", text: "" };
   },
   handleAuthorChange: function(event) {
@@ -95,4 +113,4 @@ var CommentForm = React.createClass({
   }
 });
 
-ReactDOM.render(<CommentBox url="/api/comments" pollInterval={2000} />, document.getElementById("content"));
+ReactDOM.render(<CommentBox url="http://localhost:1337/api/comments" pollInterval={2000} />, document.getElementById("content"));
