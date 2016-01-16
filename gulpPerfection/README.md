@@ -72,7 +72,20 @@ What is `require`? What does it do?
   - For example, `gulp` has a method `task()` which we need to use to create new tasks in gulp to automate our workflow
 
 In English, what is happening?
-- We are creating several new variables and setting each variable equal to a module containing an object full of methods and properties which we will be using later on 
+- We are creating several new variables and setting each variable equal to a module containing an object full of methods and properties which we will be using later on
+
+---
+
+Now for our first task:
+
+```JavaScript
+gulp.task("browserify", function() { /* Logic */ });
+```
+
+In English, what is happening?
+- We are invoking a method `task()` from object `gulp` and giving it 2 arguments:
+  - The first argument is a string `browserify` which gives the gulp task a name
+  - The second argument is an anonymous function containing the logic of the gulp task `browserify`
 
 [1]: http://christianalfoni.github.io/javascript/2014/08/15/react-js-workflow.html "Christian Alfoni's Blog"
 
