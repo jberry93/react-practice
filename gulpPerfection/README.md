@@ -2,10 +2,10 @@
 
 I will go through the example posted [here][1] to show what each line of code does and why it is so awesome! The reasons why are already written out in the summary at the end of the blog post but rest assured, I will go through each line in as much detail as possible.
 
-Here is my version of the code rewritten with an added package:
+Here is my version of the code rewritten with my personal flair:
 
 ```JavaScript
-"use strict"
+"use strict";
 var gulp = require("gulp"),
     browserify = require("browserify"),
     watchify = require("watchify"),
@@ -33,4 +33,26 @@ gulp.task("browserify", function() {
 gulp.task("default", ["browserify"]);
 ```
 
+---
+
+Now for the first line:
+
+```JavaScript
+"use strict";
+```
+
+What happens when we use this?
+- We enter into something called [strict mode][2]
+- 3 changes to JavaScript (JS) semantics occur:
+  - 1) Throws an error in place of a [silent error][3]
+  - 2) Makes it easier for JS engines to perform optimizations
+  - 3) Prohibit the use of potential future JS syntax that may or may not work when executed
+
+Why use this?
+- I prefer this mode mostly because of the first 2 changes to JS semantics but use it at your own discretion
+
 [1]: http://christianalfoni.github.io/javascript/2014/08/15/react-js-workflow.html "Christian Alfoni's Blog"
+
+[2]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode "MDN: Strict Mode"
+
+[3]: http://eloquentjavascript.net/1st_edition/chapter5.html "Eloquent JS: Error Handling"
