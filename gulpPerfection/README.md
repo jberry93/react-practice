@@ -10,7 +10,6 @@ var gulp = require("gulp"),
     browserify = require("browserify"),
     watchify = require("watchify"),
     reactify = require("reactify"),
-    concat = require("gulp-concat"),
     source = require("vinyl-source-stream");
 gulp.task("browserify", function() {
   var bundlify = browserify({
@@ -51,8 +50,36 @@ What happens when we use this?
 Why use this?
 - I prefer this mode mostly because of the first 2 changes to JS semantics but use it at your own discretion
 
+---
+
+Next few lines:
+
+```JavaScript
+var gulp = require("gulp"),
+    browserify = require("browserify"),
+    watchify = require("watchify"),
+    reactify = require("reactify"),
+    source = require("vinyl-source-stream");
+```
+
+What is going on here?
+- I am `require`-ing different packages that I brought in using *npm*
+- This is also [another way][4] of creating variables using only one statement of `var` and commas
+
+What is `require`? What does it do?
+- Firstly, `require` is a [NodeJS function][5]
+- Secondly, `require` allows us to use modules (or packages is what I have been calling them) containing different methods that we need for later use
+  - For example, `gulp` has a method `task()` which we need to use to create new tasks in gulp to automate our workflow
+
+In English, what is happening?
+- We are creating several new variables and setting each variable equal to a module containing an object full of methods and properties which we will be using later on 
+
 [1]: http://christianalfoni.github.io/javascript/2014/08/15/react-js-workflow.html "Christian Alfoni's Blog"
 
 [2]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode "MDN: Strict Mode"
 
 [3]: http://eloquentjavascript.net/1st_edition/chapter5.html "Eloquent JS: Error Handling"
+
+[4]: http://www.w3schools.com/js/js_variables.asp "W3: Variable Declaration"
+
+[5]: https://nodejs.org/api/modules.html#modules_addenda_package_manager_tips "NodeJS: require()"
