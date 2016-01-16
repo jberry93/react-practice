@@ -4,15 +4,16 @@ var gulp = require("gulp"),
     browserify = require("browserify"),
     watchify = require("watchify"),
     reactify = require("reactify"),
-    concat = require("gulp-concat");
+    concat = require("gulp-concat"),
+    source = require("vinyl-source-stream");
 
 gulp.task("browserify", function() {
   var bundlify = browserify({
-    entries: ["insert/file/here"], // whatever file goes here will have its dependencies included
+    entries: ["app.js"], // whatever file goes here will have its dependencies included
     transform: [reactify], // JSX => JS
     debug: true,
     // need these next 3 properties are required by 'watchify'
-    cache: {}, 
+    cache: {},
     packageCache: {},
     fullPaths: true
   });
@@ -22,6 +23,9 @@ gulp.task("browserify", function() {
   return stalkify.on("update", function() {
     var currentTime = Date.now();
     console.log("Currently updating!");
-    stalkify.bundle().pipe(source("insert/fileName/from/entries/here")).pipe(gulp.dest("insert/file/destination/here"));
-  });
+    stalkify.bundle().pipe(source("./")).pipe(gulp.dest("build/app.js"));
+    console.log("Update complete @ " + (Date.now() - currentTime) + " milliseconds!");
+  }).bundle().pipe(source("./")).pipe(gulp.dest("build/app.js"));
 });
+
+gulp.task("default", ["browserify"]);
