@@ -106,10 +106,19 @@ gulp.task("browserify", function() {
     entries: ["app.js"],
     transform: [reactify],
     debug: true,
-    cache: {}, packageCache: {}, fullPaths: true
+    cache: {}, packageCache: {},
+    fullPaths: true
   });
 });
 ```
+
+What do each of the [properties][6] of the `browserify` object do?
+- `entries` = Can take in a string, object, or array containing file names (in string form) that will be used for later manipulation via `browserify`. Any dependencies (meaning anything that is brought into the js file using `require`) will also be included automatically
+- `transform` = Takes in an array of functions or modules that will literally transform the code in the files from `entries` before they are parsed or analyzed
+- `debug` = If `true` a source map is needed at the end of the bundle to make debugging easier
+  - [**Source Map**][7] = A *map* of a combined/minified file leading back to its pre-combined/minified state
+- `cache` and `packageCache` = When using [`watchify`][8], it is a requirement of the [`watchify`][8] plugin to set the `cache` and `packageCache` properties or else `watchify` will not work
+- `fullPaths` = Preserves all the original paths a bundle was generated with. If `false`, the module ids would be converted to numerals which may lead to some confusion (better to stick with original paths in my opinion)
 
 [1]: http://christianalfoni.github.io/javascript/2014/08/15/react-js-workflow.html "Christian Alfoni's Blog"
 
@@ -120,3 +129,9 @@ gulp.task("browserify", function() {
 [4]: http://www.w3schools.com/js/js_variables.asp "W3: Variable Declaration"
 
 [5]: https://nodejs.org/api/modules.html#modules_addenda_package_manager_tips "NodeJS: require()"
+
+[6]: https://github.com/substack/node-browserify#usage "Browserify Documentation"
+
+[7]: http://www.html5rocks.com/en/tutorials/developertools/sourcemaps/ "HTML5 Rocks: Source Maps"
+
+[8]: https://github.com/substack/watchify "Watchify Documentation"
