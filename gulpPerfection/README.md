@@ -98,6 +98,19 @@ gulp.task("browserify", function() {
 English translation:
 - Created a new variable called `bundlify` and set it equal to a method called `browserify` which takes in one argument that is an object containing a number of properties
 
+---
+
+```JavaScript
+gulp.task("browserify", function() {
+  var bundlify = browserify({
+    entries: ["app.js"],
+    transform: [reactify],
+    debug: true,
+    cache: {}, packageCache: {}, fullPaths: true
+  });
+});
+```
+
 [1]: http://christianalfoni.github.io/javascript/2014/08/15/react-js-workflow.html "Christian Alfoni's Blog"
 
 [2]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode "MDN: Strict Mode"
