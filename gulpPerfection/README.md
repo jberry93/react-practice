@@ -134,6 +134,23 @@ gulp.task("browserify", function() {
 English translation:
 - We create a new variable `stalkify` and set it equal to a method `watchify` which takes in one argument which is the variable `bundlify` defined above. This will allow us to *watch* the bundle of code after it is created and do something upon an event which will be defined next!
 
+---
+
+```JavaScript
+gulp.task("browserify", function() {
+  /* browserify code */
+  var stalkify = watchify(bundlify);
+  return stalkify.on("update", function() { ... });
+});
+```
+
+English translation:
+- When the `browserify` task is executed, we will return the object `stalkify` and invoke its method `on()` which contains 2 arguments:
+  - First argument is a string containing a name of an event which in this case is `update`
+  - Second argument is a function to call upon the occurance of the event
+
+---
+
 [1]: http://christianalfoni.github.io/javascript/2014/08/15/react-js-workflow.html "Christian Alfoni's Blog"
 
 [2]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode "MDN: Strict Mode"
