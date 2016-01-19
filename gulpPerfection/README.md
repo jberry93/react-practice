@@ -147,7 +147,7 @@ gulp.task("browserify", function() {
 English translation:
 - When the `browserify` task is executed, we will return the object `stalkify` and invoke its method `on()` which contains 2 arguments:
   - First argument is a string containing a name of an event which in this case is `update`
-  - Second argument is a function to call upon the occurance of the event
+  - Second argument is a function to call upon the occurrence of the event
 
 ---
 
