@@ -193,6 +193,25 @@ English translation:
 
 ---
 
+Finally we reached the last part of the gulp task!
+
+```JavaScript
+gulp.task("browserify", function() {
+  /* browserify code */
+  var stalkify = watchify(bundlify);
+  return stalkify.on("update", function() {
+    /* update event logic */
+  }).bundle().pipe(source("./")).pipe(gulp.dest("build/app.js"));
+});
+```
+
+I removed the `update` event logic so it was easier to see the next line of code which are the same methods we just went over
+
+Why do we need to have these methods called a second time?
+- This is so that the process of bundling and piping occurs right when the gulp task is fired
+
+---
+
 [1]: http://christianalfoni.github.io/javascript/2014/08/15/react-js-workflow.html "Christian Alfoni's Blog"
 
 [2]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode "MDN: Strict Mode"
