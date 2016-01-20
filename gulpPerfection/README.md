@@ -148,6 +148,23 @@ English translation:
 - When the `browserify` task is executed, we will return the object `stalkify` and invoke its method `on()` which contains 2 arguments:
   - First argument is a string containing a name of an event which in this case is `update`
   - Second argument is a function to call upon the occurrence of the event
+---
+
+```JavaScript
+gulp.task("browserify", function() {
+  /* browserify code */
+  var stalkify = watchify(bundlify);
+  return stalkify.on("update", function() {
+    var currentTime = Date.now();
+    console.log("Currently updating!");
+    /* bundling/piping here */
+    console.log("Update complete in " + (Date.now() - currentTime) + " milliseconds");
+  });
+});
+```
+
+English translation:
+- So whenever an update occurs (Whenever you save a file within `entries`), we are going to set a new variable `currentTime` equal to a new instance (New instance because the first letter is capitalized) of a `Date` object and calling its `now()` method to get the exact time. We are also logging a few statements in the console to let us know at what point the bundling finishes
 
 ---
 
