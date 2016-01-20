@@ -168,6 +168,31 @@ English translation:
 
 ---
 
+```JavaScript
+gulp.task("browserify", function() {
+  /* browserify code */
+  var stalkify = watchify(bundlify);
+  return stalkify.on("update", function() {
+    var currentTime = Date.now();
+    console.log("Currently updating!");
+
+    stalkify.bundle().pipe(source("./")).pipe(gulp.dest("build/app.js"));
+
+    console.log("Update complete in " + (Date.now() - currentTime) + " milliseconds");
+  });
+});
+```
+
+English translation:
+- There is a few things going on here so let's first go through the methods in order from left to right:
+  - `bundle()` = We are first bundling all the files in `entries` and their dependencies into one file
+  - [`pipe()`][9] = Create a data stream, pull data from the stream, and write it to a destination
+    - `source()` = Giving the location of where the data stream is located (Meaning anything in root directory)
+  - `pipe()` = This next pipe will read the data from the previous data stream and write it to the destination described in the `dest()` method
+    - [`dest()`][10] = A gulp method indicating where a readable stream should be written to. If a directory is not present, it will be made
+
+---
+
 [1]: http://christianalfoni.github.io/javascript/2014/08/15/react-js-workflow.html "Christian Alfoni's Blog"
 
 [2]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode "MDN: Strict Mode"
@@ -183,3 +208,7 @@ English translation:
 [7]: http://www.html5rocks.com/en/tutorials/developertools/sourcemaps/ "HTML5 Rocks: Source Maps"
 
 [8]: https://github.com/substack/watchify "Watchify Documentation"
+
+[9]: https://nodejs.org/api/stream.html#stream_readable_pipe_destination_options "NodeJS: pipe method"
+
+[10]: https://github.com/gulpjs/gulp/blob/master/docs/API.md#gulpdestpath-options "Gulp Documentation: gulp.dest()"
