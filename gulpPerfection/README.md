@@ -212,6 +212,28 @@ Why do we need to have these methods called a second time?
 
 ---
 
+Now for the last line of code:
+
+```JavaScript
+gulp.task("default", ["browserify"]);
+```
+
+English translation:
+- We created another gulp task called `default` and gave it an array containing our first gulp task `browserify`
+- This is so that we can call more than one gulp task by typing `gulp` in the command line
+- Here is what it looks like when I call it:
+
+```BASH
+$ gulp
+[19:26:08] Using gulpfile ~/GitHub/react-practice/gulpPerfection/gulpfile.js
+[19:26:08] Starting 'browserify'...
+[19:26:11] Finished 'browserify' after 2.36 s
+[19:26:11] Starting 'default'...
+[19:26:11] Finished 'default' after 14 μs
+```
+
+## That's All Folks!
+
 [1]: http://christianalfoni.github.io/javascript/2014/08/15/react-js-workflow.html "Christian Alfoni's Blog"
 
 [2]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode "MDN: Strict Mode"
