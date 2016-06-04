@@ -1,0 +1,22 @@
+{
+  "name": "gulpperfection",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "live-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jeff",
+  "license": "ISC",
+  "dependencies": {
+    "browserify": "^13.0.0",
+    "gulp": "^3.9.0",
+    "live-server": "^0.9.0",
+    "react": "^0.14.6",
+    "react-dom": "^0.14.6",
+    "reactify": "^1.1.1",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.7.0"
+  }
+}
